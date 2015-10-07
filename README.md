@@ -15,7 +15,7 @@ require('bluebirdify')(); // done! now, Promise === Bluebird
 To handle uncaught exceptions:
 ```js
 require('bluebirdify')({
-    onuncaught: function(err) { ... }
+    onuncaught: function(err) { ... }  // or `chirp: true or function`
 });
 
 // or,

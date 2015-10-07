@@ -21,10 +21,16 @@
      * @return {undefined}
      */
     var bluebirdify = function(opts) {
+        opts = opts || {};
         this.Promise = bluebird;
 
         if (opts.onuncaught) {
             bluebirdify.onuncaught = opts.onuncaught;
+            bluebirdify.chirp();
+        } else if (opts.chirp) {
+            if (typeof opts.chirp === 'function') {
+                bluebirdify.onuncaught = opts.chirp;
+            }
             bluebirdify.chirp();
         }
     }.bind(this);
