@@ -4,7 +4,11 @@
   "description": "Sets the global Promise in your JS env to use Bluebird",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "preversion": "git checkout master && git pull && npm ls",
+    "publish-patch": "npm run preversion && npm version patch && git push origin master --tags && npm publish",
+    "publish-minor": "npm run preversion && npm version minor && git push origin master --tags && npm publish",
+    "publish-major": "npm run preversion && npm version major && git push origin master --tags && npm publish"
   },
   "author": "cdaringe",
   "license": "MIT",
@@ -13,5 +17,10 @@
   },
   "devDependencies": {
     "tape": "^4.2.1"
+  },
+  "homepage": "https://github.com/cdaringe/bluebirdify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdaringe/bluebirdify"
   }
 }
