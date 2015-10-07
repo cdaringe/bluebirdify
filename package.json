@@ -1,15 +1,15 @@
 {
   "name": "bluebirdify",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Sets the global Promise in your JS env to use Bluebird",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "author": "cdaringe",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.10.2"
+    "bluebird": "*"
   },
   "devDependencies": {
     "tape": "^4.2.1"
