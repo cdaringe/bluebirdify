@@ -1,3 +1,5 @@
+[ ![Codeship Status for cdaringe/bluebirdify](https://codeship.com/projects/e7383b50-4eba-0133-21f0-0a25db2949d0/status?branch=master)](https://codeship.com/projects/107025)
+
 # bluebirdify
 
 Sets Bluebird Promises as the global promises for your app.
