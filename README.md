@@ -24,3 +24,5 @@ bluebirdify();
 bluebirdify.chirp(function(err) { ... }); // or
 bluebirdify.handleUncaught(function(err) { ... });
 ```
+
+You can even `chirp()`/`handleUncaught()` [same method] with no handler passed in to get the basic console logging onUnhandled rejection.  The error is re-thrown after error content is logged.
