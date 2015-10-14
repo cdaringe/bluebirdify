@@ -2,17 +2,17 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['bluebird'], factory);
+        define(['bluebird', 'errio'], factory);
     } else if (typeof module === 'object' && module.exports) {
         // Node. Does not work with strict CommonJS, but
         // only CommonJS-like environments that support module.exports,
         // like Node.
-        module.exports = factory(require('bluebird'));
+        module.exports = factory(require('bluebird'), require('errio'));
     } else {
         // Browser globals (root is window)
-        root.returnExports = factory(root.bluebird);
+        root.returnExports = factory(root.bluebird, root.errio);
     }
-}(this, function(bluebird) {
+}(this, function(bluebird, errio) {
 
     /**
      * Sets Bluebird promises to the be global promises
@@ -43,14 +43,14 @@
      * @return {undefined}
      */
     bluebirdify.chirp = bluebirdify.handleUncaught = function(handler) {
-        Promise.onPossiblyUnhandledRejection(function(error) {
+        Promise.onPossiblyUnhandledRejection(function(err) {
             handler = handler || bluebirdify.onuncaught;
             if (handler) {
-                return handler(error);
+                return handler(err);
             }
-            console.error('uncaught promise detected');
-            console.dir(error);
-            throw error;
+            console.error('>> uncaught promise detected <<');
+            console.log(errio.stringify(err, { stack: true }));
+            throw err;
         });
     }
 

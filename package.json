@@ -13,7 +13,8 @@
   "author": "cdaringe",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "*"
+    "bluebird": "*",
+    "errio": "^1.2.1"
   },
   "devDependencies": {
     "tape": "^4.2.1"
