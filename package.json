@@ -1,6 +1,6 @@
 {
   "name": "bluebirdify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Sets the global Promise in your JS env to use Bluebird",
   "main": "index.js",
   "scripts": {
