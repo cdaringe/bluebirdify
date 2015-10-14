@@ -23,6 +23,7 @@
     var bluebirdify = function(opts) {
         opts = opts || {};
         this.Promise = bluebird;
+        this.Promise.longStackTraces();
 
         if (opts.onuncaught) {
             bluebirdify.onuncaught = opts.onuncaught;
