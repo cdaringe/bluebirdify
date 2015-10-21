@@ -6,6 +6,8 @@ var Bluebird = require('bluebird');
 var uncaughtCaught = false;
 
 test('bluebirdify module', function(t) {
+    t.plan(3);
+
     t.notEqual(Bluebird, Promise, 'default promise !== Bluebird promise');
     bluebirdify({
         onuncaught: function(error) {
@@ -13,16 +15,11 @@ test('bluebirdify module', function(t) {
         }
     });
     t.equal(Bluebird, Promise, 'default === Bluebird promise post bluebirdify');
-    t.end();
-});
 
-test('bluebirdify onuncaught', function(t) {
-    t.plan(1);
-    bluebirdify.chirp();
     Promise.reject();
     setTimeout(function() {
         delete bluebirdify.onuncaught; // teardown
-        t.ok(uncaughtCaught, 'uncaught promise rejection caught by base hander');
+        t.ok(uncaughtCaught, 'uncaught promise rejection caught by base hander'); // see prior test
         t.end();
     }, 10);
 });
@@ -35,3 +32,19 @@ test('bluebirdify explicit handler', function(t) {
     });
     Promise.reject();
 });
+
+test('bluebirdify onuncaught, no handler', function(t) {
+    t.plan(1);
+    bluebirdify.chirp();
+    setTimeout(function() {
+        delete bluebirdify.onuncaught; // teardown
+        t.ok(uncaughtCaught, 'uncaught promise rejection caught by base hander'); // see prior test
+        t.end();
+    }, 10);
+});
+
+// test('bluebirdify onuncaught, no handler - manual confirm output (@TODO, capture stdout)', function(t) {
+//     var err = new Error('testError - bluebirdify onuncaught');
+//     err.subProp = { subSubProp: [1, 2 , 3]};
+//     Promise.reject(err);
+// });
