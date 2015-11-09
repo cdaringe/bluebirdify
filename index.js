@@ -79,7 +79,6 @@
             if (handler) {
                 return handler(err);
             }
-            debugger;
             console.error('>> uncaught promise detected <<');
             // @note: https://github.com/petkaantonov/bluebird/issues/806
             var errComponents = JSON.parse(errio.stringify(err, { stack: true }));
