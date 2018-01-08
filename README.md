@@ -2,6 +2,8 @@
 
 # bluebirdify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cdaringe/bluebirdify.svg)](https://greenkeeper.io/)
+
 Sets Bluebird Promises as the global promises for your app.
 
 Supports CommonJS (node), AMD, and browser-global via UMD!
